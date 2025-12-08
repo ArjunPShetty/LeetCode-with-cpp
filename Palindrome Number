@@ -1,0 +1,33 @@
+class Solution {
+public:
+    bool isPalindrome(int x) {
+
+        // negative numbers can never be palindrome
+        if (x < 0) {
+            return false;
+        }
+
+        // if number ends with 0 but number is not 0, it cannot be palindrome
+        if (x != 0 && x % 10 == 0) {
+            return false;
+        }
+
+        int reversed = 0;       // this will store the reversed second half
+        int original = x;       // keep original for comparison
+
+        // reverse half of the number
+        while (original > reversed) {
+            int lastDigit = original % 10;          // get last digit
+            reversed = reversed * 10 + lastDigit;   // build reversed number
+            original = original / 10;               // remove last digit
+        }
+
+        // when digits are even count: original == reversed
+        // when digits are odd count: original == reversed / 10 (middle digit removed)
+        if (original == reversed || original == reversed / 10) {
+            return true;
+        }
+
+        return false;
+    }
+};
