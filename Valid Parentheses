@@ -1,0 +1,38 @@
+class Solution {
+public:
+    bool isValid(string s) {
+        
+        stack<char> st;
+
+        for(int i = 0; i < s.size(); i++) {
+            char ch = s[i];
+
+            // if it's an opening bracket, push it
+            if(ch == '(' || ch == '{' || ch == '[') {
+                st.push(ch);
+            }
+            else {
+                // if stack is empty, no matching opener
+                if(st.empty()) {
+                    return false;
+                }
+
+                char top = st.top();
+
+                // check if brackets match
+                if( (ch == ')' && top == '(') ||
+                    (ch == '}' && top == '{') ||
+                    (ch == ']' && top == '[') ) 
+                {
+                    st.pop();
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+
+        // if stack is empty → all brackets matched
+        return st.empty();
+    }
+};
