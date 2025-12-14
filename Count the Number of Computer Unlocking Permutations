@@ -3,13 +3,12 @@ public:
     int countPermutations(vector<int>& complexity) {
         const long long MOD = 1000000007;
         int n = complexity.size();
-        // check feasibility
+
         for (int i = 1; i < n; i++) {
             if (complexity[i] <= complexity[0]) {
                 return 0;
             }
         }
-        // compute (n-1)! % MOD
         long long result = 1;
         for (int i = 1; i <= n-1; i++) {
             result = (result * i) % MOD;
