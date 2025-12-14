@@ -22,7 +22,7 @@ public:
             }
         }
 
-        // needle not found in haystack
+
         return -1;
     }
 };

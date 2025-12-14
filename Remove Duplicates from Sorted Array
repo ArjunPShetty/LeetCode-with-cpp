@@ -2,25 +2,20 @@ class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
 
-        // If array is empty, no unique elements
         if(nums.size() == 0) {
             return 0;
         }
 
-        // i will point to the position of last unique element
         int i = 0;
 
-        // j will scan the rest of the array
         for(int j = 1; j < nums.size(); j++) {
 
-            // If a new (different) number is found
             if(nums[j] != nums[i]) {
-                i++;               // move i to next position
-                nums[i] = nums[j]; // copy unique number
+                i++;              
+                nums[i] = nums[j]; 
             }
         }
 
-        // i starts from 0, so total unique count = i+1
         return i + 1;
     }
 };
