@@ -2,33 +2,28 @@ class Solution {
 public:
     string addBinary(string a, string b) {
 
-        int i = a.size() - 1;   // pointer for string a
-        int j = b.size() - 1;   // pointer for string b
+        int i = a.size() - 1;   
+        int j = b.size() - 1;   
         int carry = 0;
 
         string result = "";
 
-        // loop until both strings are done or carry exists
         while(i >= 0 || j >= 0 || carry) {
 
             int sum = carry;
 
-            // add bit from a if available
             if(i >= 0) {
                 sum += a[i] - '0';
                 i--;
             }
 
-            // add bit from b if available
             if(j >= 0) {
                 sum += b[j] - '0';
                 j--;
             }
 
-            // current bit of result
             result = char((sum % 2) + '0') + result;
 
-            // update carry
             carry = sum / 2;
         }
 
