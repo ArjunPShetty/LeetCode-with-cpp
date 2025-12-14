@@ -2,38 +2,29 @@ class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         
-        // Dummy node to help build the result list easily
         ListNode* dummy = new ListNode(0);
         ListNode* current = dummy;
 
         int carry = 0;
 
-        // Continue until both lists end AND no carry is left
         while (l1 != nullptr || l2 != nullptr || carry != 0) {
 
-            // Take values from nodes, if node is null use 0
             int a = (l1 != nullptr) ? l1->val : 0;
             int b = (l2 != nullptr) ? l2->val : 0;
 
-            // Add digits + carry from previous step
             int sum = a + b + carry;
 
-            // New digit to store
             int digit = sum % 10;
 
-            // Carry for next step
             carry = sum / 10;
 
-            // Create new node with the digit
             current->next = new ListNode(digit);
             current = current->next;
 
-            // Move to next nodes if available
             if (l1 != nullptr) l1 = l1->next;
             if (l2 != nullptr) l2 = l2->next;
         }
 
-        // dummy->next is the actual result head
         return dummy->next;
     }
 };
