@@ -1,15 +1,11 @@
 class Solution {
 public:
     int countTriples(int n) {
-        int count = 0; // to store the number of valid triples
+        int count = 0; 
         
-        // try all values of a
         for (int a = 1; a <= n; a++) {
-            // try all values of b
             for (int b = 1; b <= n; b++) {
-                // try all values of c
                 for (int c = 1; c <= n; c++) {
-                    // check if a^2 + b^2 = c^2
                     if (a * a + b * b == c * c) {
                         count++;
                     }
@@ -17,6 +13,6 @@ public:
             }
         }
         
-        return count; // return the final answer
+        return count;
     }
 };
